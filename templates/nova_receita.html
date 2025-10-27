@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Receita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Receita</h1>
+        <form action="{{url_for('nova_receita')}}" method="POST">
+            <div>
+                <label for="title">Titulo:</label><br>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <br>
+            <div>
+                <label for="content">Nova Receita:</label><br>
+                <textarea id="content" name="content" rows="5" cols="30" required></textarea>
+            </div>
+            <br>
+            <div>
+                <button type="submit">Adicionar</button>
+            </div>
+            <br>
+        </form>
+    <a href="{{ url_for('index') }}">Voltar para a tela inicial</a>
+</div>
+</body>
+</html>
+

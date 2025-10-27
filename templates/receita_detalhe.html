@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes Receita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ recipe.title }}</h1>
+        <p>{{ recipe.content }}</p>
+    <hr>
+    <a href="{{ url_for('index') }}">Voltar Para a Tela Inicial</a>
+    <a href="{{ url_for('editar_receita', recipe_id=recipe.id) }}">Editar Receita</a> 
+    </div>
+</body>
+</html>

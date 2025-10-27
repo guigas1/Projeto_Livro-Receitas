@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Receitas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mensagem-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h1>Olá, {{ current_user.username }}!</h1>
+
+        <a href="{{ url_for('nova_receita') }}" class="btn">Criar Nova Receita</a>
+        <a href="{{ url_for('logout') }}">Sair (Logout)</a>
+        <hr>
+
+        <h2>Suas Receitas:</h2>
+        <ul>
+            {% for recipe in recipes %}
+            <li>
+                <h3>
+                <a href="{{ url_for('ver_receita', recipe_id=recipe.id) }}">{{ recipe.title }}</a>
+                </h3>
+
+                <p class="recipe-content">{{recipe.content}}</p>
+                
+                <a href="{{ url_for('editar_receita', recipe_id=recipe.id) }}">Editar</a>
+                <a href="{{ url_for('deletar_receita', recipe_id=recipe.id) }}" style="color:red;">Deletar</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>
